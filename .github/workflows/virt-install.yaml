@@ -47,7 +47,7 @@ jobs:
   test-plan:
     name: Generate test plan
     runs-on: ubuntu-slim
-    timeout-minutes: 1
+    timeout-minutes: 5
     if: github.event_name != 'schedule' || github.repository == 'adelton/virt-install'
     outputs:
       matrix-run: ${{ steps.produce-matrix.outputs.matrix-run }}

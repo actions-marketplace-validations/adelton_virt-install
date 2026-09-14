@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-slim
     permissions:
       actions: write
-    timeout-minutes: 1
+    timeout-minutes: 5
     if: github.event_name != 'schedule' || github.repository == 'adelton/virt-install'
     steps:
       - run: |
