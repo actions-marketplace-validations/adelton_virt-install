@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - '*'
+  pull_request:
   workflow_dispatch:
   schedule:
     - cron: '5 3 * * 1'
@@ -26,7 +27,9 @@ jobs:
           vm-name: ${{ matrix.vm-name }}
         id: virt-install
         continue-on-error: true
-      - run: echo '${{ steps.virt-install.outcome }}'
+      - run: echo "$OUTCOME"
+        env:
+          OUTCOME: ${{ steps.virt-install.outcome }}
       - name: Check that the action caught the inputs.vm-name
         if: steps.virt-install.outcome == 'failure'
         run: true
